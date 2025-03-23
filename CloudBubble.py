@@ -3,7 +3,9 @@
 import streamlit as st
 import pandas as pd
 
-st.header('Display image using st.image')
+#st.header('Display image using st.image')
+
+
 
 #from chatgpt to change the background colour of the webpage
 
@@ -15,7 +17,21 @@ df = pd.read_csv('Book2.csv')
 # Set page title
 st.title('Cloud Bubble')
 
-st.image('./media/Untitled96.jpg')
+#audio file
+#audio_file = open('./media/audio.mp3','rb')
+#audio_bytes = audio_file.read()
+
+url = "https://www.sciencefocus.com/science/fun-facts"
+
+st.markdown(f"[![Click here for a surprise](./media/Untitled96.jpg)]({url})", unsafe_allow_html=True)
+
+#st.markdown(f'<a href="{url}" target="_blank"><img src="./media/Untitled96.jpg" alt="Click here for a surprise" width="300"></a>', unsafe_allow_html=True)
+
+# Make the image clickable by wrapping it with a markdown link
+#st.markdown(f'<a href="{url}" target="_blank"><img src="./media/Untitled96.jpg" alt="Click here for a surprise" width="300"></a>', unsafe_allow_html=True)
+
+st.image('./media/Untitled96.jpg',caption = 'click here for a surprise')
+st.markdown(f"[![Click here for a surprise](./media/Untitled96.jpg)]({url})", unsafe_allow_html=True)
 
 # Create sidebar filters
 st.sidebar.header('What would you like to learn about today?')
