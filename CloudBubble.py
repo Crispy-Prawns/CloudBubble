@@ -14,6 +14,8 @@ import pandas as pd
 # Read the data
 df = pd.read_csv('Book2.csv')
 
+#image import
+st.image('./media/header.jpg',caption = 'All your sites - in one place',width=550)
 # Set page title
 st.title('Cloud Bubble')
 
@@ -22,6 +24,8 @@ audio_file = open('./media/dawnofchange.mp3','rb')
 audio_bytes = audio_file.read()
 
 st.audio(audio_bytes,format='audio/ogg')
+
+st.image('./media/chocolate.jpeg')
 
 url = "https://www.sciencefocus.com/science/fun-facts"
 
@@ -32,8 +36,6 @@ st.markdown(f"[![Click here for a surprise](./media/Untitled96.jpg)]({url})", un
 # Make the image clickable by wrapping it with a markdown link
 #st.markdown(f'<a href="{url}" target="_blank"><img src="./media/Untitled96.jpg" alt="Click here for a surprise" width="300"></a>', unsafe_allow_html=True)
 
-st.image('./media/Untitled96.jpg',caption = 'click here for a surprise')
-st.markdown(f"[![Click here for a surprise](./media/Untitled96.jpg)]({url})", unsafe_allow_html=True)
 
 # Create sidebar filters
 st.sidebar.header('What would you like to learn about today?')
