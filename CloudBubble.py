@@ -3,6 +3,8 @@
 import streamlit as st
 import pandas as pd
 
+st.header('Display image using st.image')
+
 #from chatgpt to change the background colour of the webpage
 
 
@@ -12,6 +14,8 @@ df = pd.read_csv('Book2.csv')
 
 # Set page title
 st.title('Cloud Bubble')
+
+st.image('./media/Untitled96.jpg')
 
 # Create sidebar filters
 st.sidebar.header('What would you like to learn about today?')
@@ -65,3 +69,5 @@ for idx, row in filtered_df.iterrows():
         st.markdown(f"📚 **Topic:** {row['Genre']}")
         st.markdown(f"📖 **Type:** {row['Director']}")
         st.markdown(f"🔗 **Link:** {row['Runtime']}")
+
+
