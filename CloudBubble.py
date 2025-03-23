@@ -5,10 +5,11 @@ import pandas as pd
 df = pd.read_csv('imdb_top_1000.csv')
 
 # Set page title
-st.title('Movie Recommendation System')
+st.title('Cloud Bubble')
 
 # Create sidebar filters
-st.sidebar.header('Filter Movies')
+st.sidebar.header('What do you want to learn about?')
+
 
 # Genre filter
 all_genres = [genre.strip() for genres in df['Genre'].str.split(',') for genre in genres]
