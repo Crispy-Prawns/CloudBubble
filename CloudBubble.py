@@ -3,31 +3,35 @@
 import streamlit as st
 import pandas as pd
 
+#from chatgpt to change the background colour of the webpage
+
+
+
 # Read the data
-df = pd.read_csv('imdb_top_1000.csv')
+df = pd.read_csv('Book2.csv')
 
 # Set page title
 st.title('Cloud Bubble')
 
 # Create sidebar filters
-st.sidebar.header('What do you want to learn about?')
+st.sidebar.header('What would you like to learn about today?')
 
 
 # Genre filter
 all_genres = [genre.strip() for genres in df['Genre'].str.split(',') for genre in genres]
 unique_genres = sorted(list(set(all_genres)))
-selected_genre = st.sidebar.selectbox('Select Genre', unique_genres)
+selected_genre = st.sidebar.selectbox('Select Topic', unique_genres)
 
 # Director filter
 all_directors = [director.strip() for directors in df['Director'].str.split(',') for director in directors]
 unique_directors = sorted(list(set(all_directors)))
-selected_director = st.sidebar.selectbox('Select Score', unique_directors)
+selected_director = st.sidebar.selectbox('Select Type', ['All'] + unique_directors)
 
 
 
 # Rating filter
 rating_range = st.sidebar.slider(
-    'Select IMDB Rating Range',
+    'Select Difficulty level: ',
     min_value=float(df['IMDB_Rating'].min()),
     max_value=float(df['IMDB_Rating'].max()),
     value=(float(df['IMDB_Rating'].min()), float(df['IMDB_Rating'].max()))
@@ -36,11 +40,12 @@ rating_range = st.sidebar.slider(
 # Filter the dataframe
 filtered_df = df[
     (df['IMDB_Rating'].between(rating_range[0], rating_range[1])) &
-    (df['Genre'].str.contains(selected_genre, case=False))
+    (df['Genre'].str.contains(selected_genre, case=False)) &
+    (df['Director'].str.contains(selected_director, case=False) if selected_director != 'All' else True)
 ]
 
 # Display results
-st.subheader(f'Found {len(filtered_df)} movies matching your criteria')
+st.subheader(f'Found {len(filtered_df)} resources matching your criteria')
 
 # Show movies in a simpler format
 for idx, row in filtered_df.iterrows():
@@ -57,6 +62,6 @@ for idx, row in filtered_df.iterrows():
         st.image(row['Poster_Link'], width=200)
     
     with col2:
-        st.markdown(f"🎬 **Genre:** {row['Genre']}")
-        st.markdown(f"👨‍💼 **Director:** {row['Director']}")
-        st.markdown(f"⏱️ **Runtime:** {row['Runtime']}")
+        st.markdown(f"📚 **Topic:** {row['Genre']}")
+        st.markdown(f"📖 **Type:** {row['Director']}")
+        st.markdown(f"🔗 **Link:** {row['Runtime']}")
