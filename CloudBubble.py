@@ -18,8 +18,10 @@ df = pd.read_csv('Book2.csv')
 st.title('Cloud Bubble')
 
 #audio file
-#audio_file = open('./media/audio.mp3','rb')
-#audio_bytes = audio_file.read()
+audio_file = open('./media/dawnofchange.mp3','rb')
+audio_bytes = audio_file.read()
+
+st.audio(audio_bytes,format='audio/ogg')
 
 url = "https://www.sciencefocus.com/science/fun-facts"
 
@@ -73,7 +75,7 @@ for idx, row in filtered_df.iterrows():
     
     # Movie title and rating in a header
     st.header(f"{row['Series_Title']} ({row['Released_Year']})")
-    st.markdown(f"⭐ **Rating:** {row['IMDB_Rating']}")
+    st.markdown(f"⭐ **Difficulty level:** {row['IMDB_Rating']}")
     
     # Two columns: Image and Basic Info
     col1, col2 = st.columns([1, 2])
