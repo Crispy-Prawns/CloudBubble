@@ -1,3 +1,5 @@
+#code was first from https://github.com/zaid-ahmed1/Hack-the-Bias-Web-App-Template/blob/main/app.py
+
 import streamlit as st
 import pandas as pd
 
@@ -15,6 +17,13 @@ st.sidebar.header('What do you want to learn about?')
 all_genres = [genre.strip() for genres in df['Genre'].str.split(',') for genre in genres]
 unique_genres = sorted(list(set(all_genres)))
 selected_genre = st.sidebar.selectbox('Select Genre', unique_genres)
+
+# Director filter
+all_directors = [director.strip() for directors in df['Director'].str.split(',') for director in directors]
+unique_directors = sorted(list(set(all_directors)))
+selected_director = st.sidebar.selectbox('Select Score', unique_directors)
+
+
 
 # Rating filter
 rating_range = st.sidebar.slider(
